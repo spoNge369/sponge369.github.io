@@ -1,0 +1,578 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.15.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Perl as a Better grep - Linux - spoNge</title>
+<meta name="description" content="Usando Perl como un grep mejorado">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="spoNge">
+<meta property="og:title" content="Perl as a Better grep - Linux">
+<meta property="og:url" content="http://localhost:4000/perlbettergrep/">
+
+
+  <meta property="og:description" content="Usando Perl como un grep mejorado">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/greperl/perl.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2021-09-19T00:00:00-04:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/perlbettergrep/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "spoNge",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="spoNge Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/masthead.png" alt=""></a>
+                
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/">Home</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/year-archive/">Posts</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+    
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1">
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Perl as a Better grep - Linux</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Perl as a Better grep - Linux">
+    <meta itemprop="description" content="Usando Perl como un grep mejorado">
+    <meta itemprop="datePublished" content="September 19, 2021">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Perl as a Better grep - Linux
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p class="page__meta">
+          
+            <i class="fa fa-fw fa-calendar" aria-hidden="true"></i> <time datetime="2021-09-19T00:00:00-04:00">September 19, 2021 </time> 
+          
+          
+        </p>
+        <p><code class="language-plaintext highlighter-rouge">$&gt;</code> -&gt; terminal.<br>
+<code class="language-plaintext highlighter-rouge">#&gt;</code> -&gt; terminal con acceso root.</p>
+
+<h2 id="contrapartes-de-grep-en-perl">Contrapartes de grep en Perl</h2>
+
+<p><code class="language-plaintext highlighter-rouge">$&gt;perl -wnl -e 'code' file</code></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">grep</th>
+      <th style="text-align: center">Perl</th>
+      <th style="text-align: center">Uso</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">grep 'RE' file</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">perl -wnl -e '/RE/ and print;' file</code></td>
+      <td style="text-align: center">Imprime la linea donde esta ‘RE’ dentro de <code class="language-plaintext highlighter-rouge">file</code>
+</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">grep -v 'RE' file</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">perl -wnl -e '/RE/ or  print;' file</code></td>
+      <td style="text-align: center">Imprime la linea donde NO esta ‘RE’ dentro de <code class="language-plaintext highlighter-rouge">file</code>
+</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">grep -i 'RE' file</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">perl -wnl -e '/RE/i and print;' file</code></td>
+      <td style="text-align: center">Case <code class="language-plaintext highlighter-rouge">i</code>nsensitive</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">grep -l 'RE' file1 file2</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">perl -wnl -e '/RE/ and print $ARGV and close ARGV;' file1 file2</code></td>
+      <td style="text-align: center">Imprime los archivos donde encuentre la coincidencia</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">fgrep 'string' file</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">perl -wnl -e '/\Qstring\E/ and print'; file</code></td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">egrep 'RE' file</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">perl -wnl -e '/RE/ and print;' file</code></td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">RE</code>: Expresion Regular, que es una cadena de caracteres que define un patron, pueden ser simples caracteres literales o metacaracteres.</p>
+
+<h2 id="parametros-perl">Parametros perl</h2>
+<p><code class="language-plaintext highlighter-rouge">-w:</code> Habilitar las warnings.<br>
+ <code class="language-plaintext highlighter-rouge">-n:</code> Processing input - Bucle que recorre cada linea de <code class="language-plaintext highlighter-rouge">file</code> y cuyo bloque es <code class="language-plaintext highlighter-rouge">code</code>.<br>
+ <code class="language-plaintext highlighter-rouge">-l:</code> Un salto de linea para cada registro de salida.<br>
+ <code class="language-plaintext highlighter-rouge">-e 'code':</code> Execute el <code class="language-plaintext highlighter-rouge">code</code>.<br></p>
+
+<h2 id="files-de-pruebas">files de pruebas</h2>
+
+<div class="code-header">
+    
+    
+    <div class="copy-code-container">
+        <button class="copy-code-button" aria-label="Copy code block to your clipboard" data-code="direcciones.txt
+Halchal Punter:1234 Disk Drive:Milpitas:ca:95035
+Mooshi Pomalus:4242 Wafer Lane:San Jose:CA:95134
+Thor Iverson:4789 Coffee Circle:Seattle:WA:981O7" type="button"></button>
+    </div>
+    
+</div>
+<pre><code class="language-dat">direcciones.txt
+Halchal Punter:1234 Disk Drive:Milpitas:ca:95035
+Mooshi Pomalus:4242 Wafer Lane:San Jose:CA:95134
+Thor Iverson:4789 Coffee Circle:Seattle:WA:981O7
+</code></pre>
+
+<div class="code-header">
+    
+    
+    <div class="copy-code-container">
+        <button class="copy-code-button" aria-label="Copy code block to your clipboard" data-code="miembros.txt
+Bruce Cockburn M5T 1A1
+Imrat Khan 400076
+Matthew Stull 98115
+Torbin Ulrich 98107" type="button"></button>
+    </div>
+    
+</div>
+<pre><code class="language-dat">miembros.txt
+Bruce Cockburn M5T 1A1
+Imrat Khan 400076
+Matthew Stull 98115
+Torbin Ulrich 98107
+</code></pre>
+
+<div class="code-header">
+    
+    
+    <div class="copy-code-container">
+        <button class="copy-code-button" aria-label="Copy code block to your clipboard" data-code="projects.txt
+area51: ET,CYA,NOYB,UFO,NSA
+glorp:  FYI,INGY,ESR 
+slurm:  URI,INGY,TFM,ESR,SRV
+yabl:   URL,SRV,INGY,ESR" type="button"></button>
+    </div>
+    
+</div>
+<pre><code class="language-dat">projects.txt
+area51: ET,CYA,NOYB,UFO,NSA
+glorp:  FYI,INGY,ESR 
+slurm:  URI,INGY,TFM,ESR,SRV
+yabl:   URL,SRV,INGY,ESR
+</code></pre>
+
+<h2 id="algunos-ejemplos">Algunos ejemplos</h2>
+
+<div class="code-header">
+    
+    
+</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ perl <span class="nt">-wnl</span> <span class="nt">-e</span> <span class="s1">'/root/ and print;'</span> /etc/passwd
+root:x:0:0:root:/root:/usr/bin/zsh
+nm-openvpn:x:126:131:NetworkManager OpenVPN,,,:/var/lib/openvpn/chroot:/usr/sbin/nologin
+</code></pre></div></div>
+
+<div class="code-header">
+    
+    
+</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ perl <span class="nt">-wnl</span> <span class="nt">-e</span> <span class="s1">'/ROot/i and print;'</span> /etc/passwd
+root:x:0:0:root:/root:/usr/bin/zsh
+nm-openvpn:x:126:131:NetworkManager OpenVPN,,,:/var/lib/openvpn/chroot:/usr/sbin/nologin
+</code></pre></div></div>
+
+<div class="code-header">
+    
+    
+</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#Imprime solo las lineas donde aparecen 'ESR' y 'SRV'</span>
+❯ perl <span class="nt">-wnl</span> <span class="nt">-e</span> <span class="s1">'/\bESR\b/ and /\bSRV\b/ and print;'</span> projects.txt
+slurm:  URI,INGY,TFM,ESR,SRV
+yabl:   URL,SRV,INGY,ESR
+</code></pre></div></div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#perl" class="page__taxonomy-item" rel="tag">perl</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#grep" class="page__taxonomy-item" rel="tag">grep</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#perl" class="page__taxonomy-item" rel="tag">Perl</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-09-19T00:00:00-04:00">September 19, 2021</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/vimrc/" class="pagination--pager" title=".vimrc - linux
+">Previous</a>
+    
+    
+      <a href="/winAD/" class="pagination--pager" title="Active Directory - CTFs
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+</div>
+
+
+<script src="/assets/scripts/copyCode.js"></script>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+    <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2022 spoNge</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script data-search-pseudo-elements defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+  </body>
+</html>

