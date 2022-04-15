@@ -12,11 +12,11 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 remote_theme             : "mmistakes/minimal-mistakes@4.15.1"
-minimal_mistakes_skin    : "haxor" # "haxor" , "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "dark" # "haxor" , "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "spoNge :)"
+title                    : "spoNge"
 title                    : "spoNge"
 title_separator          : "-"
 name                     : "spoNge"
@@ -104,11 +104,11 @@ analytics:
 author:
   name             : "Simon Uzcategui <br> spoNge369"
   avatar           : "/assets/images/sponge.png"
-  bio              : "Pentester - CTF Player"
+  bio              : "Pentester - CTF Player <br> <script src='https://www.hackthebox.eu/badge/605667'></script>"
 #location         : 
   email            : "gamingingeniero@gmail.com"
   uri              :
-  home             : # null (default), "absolute or relative url to link to author home"
+  home             : "https://app.hackthebox.com/profile/605667" #null (default), "absolute or relative url to link to author home"
   bitbucket        :
   codepen          :
   dribbble         :
@@ -132,7 +132,6 @@ author:
   weibo            :
   xing             :
   youtube          : "https://www.youtube.com/channel/UCOgPJ85rcfr_1f7zR-lAKtQ"
-  hackthebox       : "https://app.hackthebox.com/profile/605667"
 
 # Reading Files
 include:
@@ -269,5 +268,5 @@ defaults:
       author_profile: true
       read_time: false
       comments: false
-      share: false
+      share: true
       related: true

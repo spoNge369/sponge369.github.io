@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-14T22:03:39-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">spoNge</title><subtitle>Nothing</subtitle><author><name>Simon Uzcategui &lt;br&gt; spoNge369</name><email>gamingingeniero@gmail.com</email></author><entry><title type="html">Active Directory - CTFs</title><link href="http://localhost:4000/winAD/" rel="alternate" type="text/html" title="Active Directory - CTFs" /><published>2022-04-14T00:00:00-04:00</published><updated>2022-04-14T00:00:00-04:00</updated><id>http://localhost:4000/winAD</id><content type="html" xml:base="http://localhost:4000/winAD/">&lt;p align=&quot;center&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-14T22:37:11-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">spoNge</title><subtitle>Nothing</subtitle><author><name>Simon Uzcategui &lt;br&gt; spoNge369</name><email>gamingingeniero@gmail.com</email></author><entry><title type="html">Active Directory - CTFs</title><link href="http://localhost:4000/winAD/" rel="alternate" type="text/html" title="Active Directory - CTFs" /><published>2022-04-14T00:00:00-04:00</published><updated>2022-04-14T00:00:00-04:00</updated><id>http://localhost:4000/winAD</id><content type="html" xml:base="http://localhost:4000/winAD/">&lt;p align=&quot;center&quot;&gt;
 &lt;img src=&quot;/assets/images/winAD/tuxbreak.jpg&quot; width=&quot;700&quot; /&gt;
 &lt;/p&gt;
 
@@ -362,25 +362,6 @@ yabl:   URL,SRV,INGY,ESR
 
 &lt;h2 id=&quot;editando-vimrc&quot;&gt;Editando .vimrc&lt;/h2&gt;
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&amp;gt; vim $HOME/.vimrc&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;«««&amp;lt; HEAD&lt;/p&gt;
-
-&lt;p&gt;=======&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;blockquote&gt;
-      &lt;blockquote&gt;
-        &lt;blockquote&gt;
-          &lt;blockquote&gt;
-            &lt;blockquote&gt;
-              &lt;p&gt;b9b9922 (postAD)&lt;/p&gt;
-            &lt;/blockquote&gt;
-          &lt;/blockquote&gt;
-        &lt;/blockquote&gt;
-      &lt;/blockquote&gt;
-    &lt;/blockquote&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
 
 &lt;div class=&quot;code-header&quot;&gt;
     
